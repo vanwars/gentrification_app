@@ -48,9 +48,11 @@ define(["marionette", "collection", "mapbox"],
                     latLng = e.layer.getLatLng();
                 window.location.hash = target;
 
-                //todo: start here. Why isn't model query fetching detailed data?
-                model.urlRoot = 'http://dev.localground.org' + this.api_endpoint;
-                model.fetch();
+                // Get Marker Detail if applicable:
+                if (model.get("overlay_type") == "marker" && !model.get("children")) {
+                    model.urlRoot = 'http://dev.localground.org' + this.api_endpoint;
+                    model.fetch();
+                }
                 this.map.setView([latLng.lat, latLng.lng], 16);
             }
         });
