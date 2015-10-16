@@ -30,5 +30,9 @@ var pages = [
     {
         url: "start",
         transition: "hideSplashScreen"
+    },
+    {
+        url: "*notFound",
+        transition: "hideSplashScreen"
     }
 ];

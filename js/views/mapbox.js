@@ -3,6 +3,7 @@ define(["marionette", "collection", "mapbox"],
         "use strict";
         var MapboxView = Marionette.CompositeView.extend({
             id: 'map',
+            map: null,
             initialize: function (opts) {
                 this.collection = new Collection({
                     api_endpoint: opts.api_endpoint,
@@ -26,7 +27,8 @@ define(["marionette", "collection", "mapbox"],
                     places = {
                         type: 'FeatureCollection',
                         features: []
-                    };
+                    },
+                    that = this;
                 this.collection.each(function (marker) {
                     places.features.push({
                         geometry: marker.get("geometry"),
@@ -40,12 +42,14 @@ define(["marionette", "collection", "mapbox"],
                 });
                 spots.setGeoJSON(places);
                 spots.on('click', function (e) {
-                    var id = "#" + e.layer.feature.properties.id;
-                    window.location.hash = id;
+                    that.markerClick(e);
                 });
             },
-            markerClick: function () {
-                //
+            markerClick: function (e) {
+                var id = "#" + e.layer.feature.properties.id;
+                window.location.hash = id;
+                console.log(e.layer.feature.geometry.coordinates);
+                //this.map.setView(e.layer.feature.geometry.coordinates, 15);
             }
         });
         return MapboxView;
