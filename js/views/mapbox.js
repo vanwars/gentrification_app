@@ -5,13 +5,7 @@ define(["marionette", "collection", "mapbox"],
             id: 'map',
             map: null,
             initialize: function (opts) {
-                this.collection = new Collection({
-                    api_endpoint: opts.api_endpoint,
-                    page_size: opts.page_size || 10,
-                    comparator: opts.ordering_field || "id",
-                    filter: opts.filter
-                });
-
+                this.collection = opts.collection;
                 //initialize the map:
                 L.mapbox.accessToken = 'pk.eyJ1IjoibGF1cmVuYmVuaWNob3UiLCJhIjoiQ1BlZGczRSJ9.EVMieITn7lHNi6Ato9wFwg';
                 this.map = L.mapbox.map('map', 'laurenbenichou.54e91cf8', {
@@ -56,9 +50,7 @@ define(["marionette", "collection", "mapbox"],
 
                 //todo: start here. Why isn't model query fetching detailed data?
                 model.urlRoot = 'http://dev.localground.org' + this.api_endpoint;
-                model.fetch({ success: function () {
-                    console.log(model.get("children").photos.data[0]);
-                }});
+                model.fetch();
                 this.map.setView([latLng.lat, latLng.lng], 16);
             }
         });

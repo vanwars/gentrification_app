@@ -1,4 +1,7 @@
 <section id='{{ id }}' class="active" style="background-color: {{ hexToRgb color }}">
     <h3>{{ name }}</h3>
+    {{#if children}}
+        <img src="{{ children.photos.data.[0].path_large }}" />
+    {{/if}}
     <p>{{ description }}</p>
 </section>

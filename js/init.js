@@ -6,10 +6,10 @@ define(["underscore",
         "views/record-list",
         "views/record-detail",
         "views/mapbox",
-
+        "collection",
         "functions"
     ],
-    function (_, $, Backbone, Marionette, BaseView, RecordListView, RecordDetailView, MapboxView) {
+    function (_, $, Backbone, Marionette, BaseView, RecordListView, RecordDetailView, MapboxView, Collection) {
         "use strict";
         var App = new Marionette.Application();
         _.extend(App, {
@@ -34,19 +34,35 @@ define(["underscore",
                     }
                 });
             },
+
             getView: function (page) {
                 switch (page.type) {
                 case "list":
-                    _.extend(page, this.datasets[page.dataset]);
+                    this.attachDataset(page);
                     return RecordListView.extend(page);
                 case "detail":
                     return RecordDetailView.extend(page);
                 case "mapbox":
-                    _.extend(page, this.datasets[page.dataset]);
+                    this.attachDataset(page);
                     return MapboxView.extend(page);
                 default:
                     return BaseView.extend(page);
                 }
+            },
+
+            attachDataset: function (page) {
+                if (!page.dataset) { return; }
+                var dataset = this.datasets[page.dataset];
+                _.extend(page, dataset);
+                if (!dataset.collection) {
+                    dataset.collection = new Collection({
+                        api_endpoint: dataset.api_endpoint,
+                        page_size: dataset.page_size || 10,
+                        comparator: dataset.ordering_field || "id",
+                        filter: dataset.filter
+                    });
+                }
+                page.collection = dataset.collection;
             },
 
             buildRoutes: function (pages) {

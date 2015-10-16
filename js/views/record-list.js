@@ -18,13 +18,9 @@ define(["jquery",
             childViewContainer: '.data-container',
 
             initialize: function (opts) {
-                this.collection = new Collection({
-                    api_endpoint: opts.api_endpoint,
-                    page_size: opts.page_size || 10,
-                    comparator: opts.ordering_field || "id",
-                    filter: opts.filter
-                });
+                this.collection = opts.collection;
                 this.listenTo(this.collection, 'reset', this.renderWithHelpers);
+                //this.listenTo(this.collection, 'change', this.renderWithHelpers);
                 this.loadTemplates(opts);
             },
 
@@ -38,8 +34,10 @@ define(["jquery",
 
                     function (Handlebars, CollectionTemplatePath, ItemTemplatePath) {
                         that.childView = Marionette.ItemView.extend({
-                            template: Handlebars.compile(ItemTemplatePath),
-                            tagName: "tr"
+                            modelEvents: {
+                                "change": "render"
+                            },
+                            template: Handlebars.compile(ItemTemplatePath)
                         });
                         that.template = Handlebars.compile(CollectionTemplatePath);
                         that.collection.fetch({reset: true});
