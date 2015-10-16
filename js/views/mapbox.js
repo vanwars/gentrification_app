@@ -35,7 +35,9 @@ define(["marionette", "collection", "mapbox"],
                         properties: {
                             id: marker.get("id"),
                             name: marker.get("name"),
-                            "marker-color": marker.get("color")
+                            "marker-color": marker.get("color"),
+                            "marker-symbol": "village",
+                            "marker-size": "large"
                         },
                         type: "Feature"
                     });
@@ -46,10 +48,18 @@ define(["marionette", "collection", "mapbox"],
                 });
             },
             markerClick: function (e) {
-                var id = "#" + e.layer.feature.properties.id;
-                window.location.hash = id;
-                console.log(e.layer.feature.geometry.coordinates);
-                //this.map.setView(e.layer.feature.geometry.coordinates, 15);
+                var id = e.layer.feature.properties.id,
+                    model = this.collection.get(id),
+                    target = "#" + id,
+                    latLng = e.layer.getLatLng();
+                window.location.hash = target;
+
+                //todo: start here. Why isn't model query fetching detailed data?
+                model.urlRoot = 'http://dev.localground.org' + this.api_endpoint;
+                model.fetch({ success: function () {
+                    console.log(model.get("children").photos.data[0]);
+                }});
+                this.map.setView([latLng.lat, latLng.lng], 16);
             }
         });
         return MapboxView;

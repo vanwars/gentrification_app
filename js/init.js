@@ -53,6 +53,7 @@ define(["underscore",
                 var that = this;
                 /* Dynamically builds Backbone Routes from the config file */
                 _.each(pages, function (page) {
+                    page.vent = that.vent;
                     that.pages[page.url] = page;
                     if (page.type == "detail") {
                         page.modelID = page.id;
