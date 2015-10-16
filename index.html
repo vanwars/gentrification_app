@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html class="no-js" lang="en">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <!--[if lt IE 9]>
@@ -42,15 +42,15 @@
     <!-- Splash page -->
     <div id="pan"></div>
 
-  <!-- Main content -->
+    <!-- Main content -->
     <div id="main-content-wrapper">
-        
+
         <!-- Map -->
         <div id="map"></div>
 
         <!-- Content -->
         <article id='narrative'></article>
-        
+
         <!-- social -->
         <div class="share-bttn"></div>
 
@@ -58,7 +58,6 @@
         <div class="text-center hide-for-touch" id="modal-trigger">
             <a class="fi-plus large" id="plus" data-reveal-id="myModal" href="#" style=
             "font-style: italic"></a>
-
             <p class="hidden">Add Your Story!</p>
         </div>
 
@@ -71,69 +70,69 @@
 
             <p class="hidden touch">Add Your Story!</p>
         </div>
-      </div>
+    </div>
 
 
 
-        <!-- Modal -->
-        <div class="reveal-modal text-center" data-reveal="" id="myModal">
-            <form data-abide id="ajax-contact" method="post" action="mailer.php">
-              <fieldset>
-                <legend><h1>Submit Your Stories</h1></legend>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <p>We would love to consider adding your story to our map. Note that submitting a story does not guarantee that we will publish it. </p>
-                    </div>
+    <!-- Modal -->
+    <div class="reveal-modal text-center" data-reveal="" id="myModal">
+        <form data-abide id="ajax-contact" method="post" action="mailer.php">
+          <fieldset>
+            <legend><h1>Submit Your Stories</h1></legend>
+            <div class="row">
+                <div class="large-12 columns">
+                    <p>We would love to consider adding your story to our map. Note that submitting a story does not guarantee that we will publish it. </p>
                 </div>
-                <div class="row">
-                  <div class="large-4 columns">
-                    <label>First Name <small>required</small></label>
-                    <input id="name" name="first_name" type="text" required placeholder="Enter your name or nickname.">
-                    <small class="error">A name or nickname is required.</small>
-                  </div>
-                  <div class="large-4 columns">
-                    <label>Last Name <small>optional</small></label>
-                    <input id="last_name" name="last_name" type="text" placeholder="Enter your last name.">
-                  </div>
-                <div class="large-4 columns">
-                    <label>Email <small>required</small></label>
-                    <input id="email" type="email" name="email" required placeholder="Please enter your email.">
-                     <small class="error">An email address is required.</small>
-                  </div>
-                </div>
+            </div>
+            <div class="row">
+              <div class="large-4 columns">
+                <label>First Name <small>required</small></label>
+                <input id="name" name="first_name" type="text" required placeholder="Enter your name or nickname.">
+                <small class="error">A name or nickname is required.</small>
+              </div>
+              <div class="large-4 columns">
+                <label>Last Name <small>optional</small></label>
+                <input id="last_name" name="last_name" type="text" placeholder="Enter your last name.">
+              </div>
+            <div class="large-4 columns">
+                <label>Email <small>required</small></label>
+                <input id="email" type="email" name="email" required placeholder="Please enter your email.">
+                 <small class="error">An email address is required.</small>
+              </div>
+            </div>
 
-                <div class="row">
-                  <div class="large-12 columns">
-                    <label>Your Story <small>required</small></label>
-                    <textarea id="story" name="story" required placeholder="Share your story."></textarea>
-                     <small class="error">A story is required</small>
-                  </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Your Story <small>required</small></label>
+                <textarea id="story" name="story" required placeholder="Share your story."></textarea>
+                 <small class="error">A story is required</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Location <small>required</small></label>
+                <textarea id="location" name="location" required placeholder="Address or cross streets ok."></textarea>
+                 <small class="error">We need a location to map your story.</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Suggested Image <small>optional but we'd love a suggestion</small></label>
+                <textarea id="image_url" name="image_url" type="url" placeholder="Paste URL here. This will help us with creating an icon."></textarea>
+              </div>
+            </div>
+          <div class="row agreement">
+                <div class="large-12 columns">
+                    <p>Youth Radio's West Side Stories Agreement</p>
+                    <small>By pressing “Submit,” I agree that I wish to submit material (the “Contribution”) as part of West Side Stories, a project of Youth Radio. I affirm that I am over 13 years of age, and I affirm that I have taken all steps necessary to make this agreement binding. The Contribution I have submitted is original. I affirm that none of it is copyrighted by or in any way the property of others, and I agree to indemnify Youth Radio in the event anyone claims that it is their material and that I do not own it. In consideration of the recording of the Contribution, I hereby grant to Youth Radio a non-exclusive, worldwide, irrevocable, fully-paid-up license to make all uses whatsoever of the Contribution, including without limitation editing, broadcasting, streaming, publishing, and copying the Contribution for both commercial and non-commercial purposes, and including the use of my name, in connection with that use. Youth Radio may make these uses and may assign or sub-license these rights without permission from or payment to me. I hereby release Youth Radio and its licensees, including their respective employees, directors, officers, agents, successors, and assigns, from all claims which I now have, have ever had or may hereafter have against them relating in any way to the Contribution. This agreement shall be governed by, and construed in accordance with, the internal law of the State of California, without regard to conflicts of laws, and any dispute arising out of this agreement shall be brought in the federal or state courts located in Oakland, California.</small>
                 </div>
-                <div class="row">
-                  <div class="large-12 columns">
-                    <label>Location <small>required</small></label>
-                    <textarea id="location" name="location" required placeholder="Address or cross streets ok."></textarea>
-                     <small class="error">We need a location to map your story.</small>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="large-12 columns">
-                    <label>Suggested Image <small>optional but we'd love a suggestion</small></label>
-                    <textarea id="image_url" name="image_url" type="url" placeholder="Paste URL here. This will help us with creating an icon."></textarea>
-                  </div>
-                </div>
-              <div class="row agreement">
-                    <div class="large-12 columns">
-                        <p>Youth Radio's West Side Stories Agreement</p>
-                        <small>By pressing “Submit,” I agree that I wish to submit material (the “Contribution”) as part of West Side Stories, a project of Youth Radio. I affirm that I am over 13 years of age, and I affirm that I have taken all steps necessary to make this agreement binding. The Contribution I have submitted is original. I affirm that none of it is copyrighted by or in any way the property of others, and I agree to indemnify Youth Radio in the event anyone claims that it is their material and that I do not own it. In consideration of the recording of the Contribution, I hereby grant to Youth Radio a non-exclusive, worldwide, irrevocable, fully-paid-up license to make all uses whatsoever of the Contribution, including without limitation editing, broadcasting, streaming, publishing, and copying the Contribution for both commercial and non-commercial purposes, and including the use of my name, in connection with that use. Youth Radio may make these uses and may assign or sub-license these rights without permission from or payment to me. I hereby release Youth Radio and its licensees, including their respective employees, directors, officers, agents, successors, and assigns, from all claims which I now have, have ever had or may hereafter have against them relating in any way to the Contribution. This agreement shall be governed by, and construed in accordance with, the internal law of the State of California, without regard to conflicts of laws, and any dispute arising out of this agreement shall be brought in the federal or state courts located in Oakland, California.</small>
-                    </div>
-                </div>
-                    <button id="submit_form" type="submit" class="button secondary cust-button">Submit</button>
-                </fieldset>
-            </form>
-            <div id="form-messages" class="success"></div>
-            <a class="close-reveal-modal">&#215;</a>
-        </div>
+            </div>
+                <button id="submit_form" type="submit" class="button secondary cust-button">Submit</button>
+            </fieldset>
+        </form>
+        <div id="form-messages" class="success"></div>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
 
     <!-- Script -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -146,7 +145,7 @@
     <script src="/js/require-config.js" type="text/javascript"></script>
     <script>
         require(["init", "config"], function(App) {
-                App.start({pages: pages});
+                App.start({ pages: pages, datasets: datasets });
             }
         );
     </script>

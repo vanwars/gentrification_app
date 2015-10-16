@@ -8,7 +8,7 @@ require.config({
         'text': 'external/text',
         'marionette': 'external/backbone.marionette',
         'underscore': 'external/underscore-min',
-        'mapbox': 'http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox'
+        'mapbox': '//youthradio.org/innovationlab/westsidestories/bower_components/mapbox.js/mapbox'
     },
     shim: {
         'underscore': {

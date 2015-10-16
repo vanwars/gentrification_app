@@ -13,6 +13,8 @@ define(["underscore",
         "use strict";
         var App = new Marionette.Application();
         _.extend(App, {
+            collections: {},
+            datasets: {},
             pages: {},
             routes: {},
             appRouter: null,
@@ -35,10 +37,12 @@ define(["underscore",
             getView: function (page) {
                 switch (page.type) {
                 case "list":
+                    _.extend(page, this.datasets[page.dataset]);
                     return RecordListView.extend(page);
                 case "detail":
                     return RecordDetailView.extend(page);
                 case "mapbox":
+                    _.extend(page, this.datasets[page.dataset]);
                     return MapboxView.extend(page);
                 default:
                     return BaseView.extend(page);
@@ -79,6 +83,7 @@ define(["underscore",
         });
 
         App.addInitializer(function (opts) {
+            this.datasets = opts.datasets;
             this.buildViews(opts.pages);
             this.buildRoutes(opts.pages);
             var AppRouter = Backbone.Router.extend({

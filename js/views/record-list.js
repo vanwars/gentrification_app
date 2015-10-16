@@ -1,11 +1,8 @@
 define(["jquery",
-        "underscore",
         "marionette",
-        "collection",
-        "views/view-mixin",
-        "views/record-detail"
+        "collection"
     ],
-    function ($, _, Marionette, Collection, ViewMixin, RecordView) {
+    function ($, Marionette, Collection) {
         'use strict';
         /**
          * Controls a dictionary of overlayGroups

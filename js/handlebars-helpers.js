@@ -1,11 +1,24 @@
-define(["handlebars", "backbone"],
-    function (Handlebars, Backbone) {
+define(["handlebars"],
+    function (Handlebars) {
         "use strict";
         Handlebars.registerHelper("ifHasQuotes", function (txt, block) {
             if (txt && txt.indexOf("\"") != -1) {
                 return block.fn(this);
             }
             return false;
+        });
+
+        Handlebars.registerHelper("hexToRgb", function (hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            result = result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+            if (result) {
+                return "rgba(" + result.r + ", " + result.g + ", " + result.b + ", 0.4)";
+            }
+            return "";
         });
 
         Handlebars.registerHelper("highlightIntensity", function (txt) {
