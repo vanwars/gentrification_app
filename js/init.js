@@ -13,7 +13,6 @@ define(["underscore",
         "use strict";
         var App = new Marionette.Application();
         _.extend(App, {
-            collections: {},
             datasets: {},
             pages: {},
             routes: {},
@@ -53,7 +52,6 @@ define(["underscore",
             attachDataset: function (page) {
                 if (!page.dataset) { return; }
                 var dataset = this.datasets[page.dataset];
-                _.extend(page, dataset);
                 if (!dataset.collection) {
                     dataset.collection = new Collection({
                         api_endpoint: dataset.api_endpoint,
@@ -62,7 +60,7 @@ define(["underscore",
                         filter: dataset.filter
                     });
                 }
-                page.collection = dataset.collection;
+                _.extend(page, dataset);
             },
 
             buildRoutes: function (pages) {

@@ -6,6 +6,7 @@ define(["marionette", "collection", "mapbox"],
             map: null,
             initialize: function (opts) {
                 this.collection = opts.collection;
+
                 //initialize the map:
                 L.mapbox.accessToken = 'pk.eyJ1IjoibGF1cmVuYmVuaWNob3UiLCJhIjoiQ1BlZGczRSJ9.EVMieITn7lHNi6Ato9wFwg';
                 this.map = L.mapbox.map('map', 'laurenbenichou.54e91cf8', {
