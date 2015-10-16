@@ -114,6 +114,9 @@ a:hover {
     right: 0;
     z-index: 9999;
 }
+.fullscreen {
+    border: solid 10px #000;
+}
 .fullscreen,
 .main-title {
     min-height: 100%;
@@ -172,7 +175,7 @@ a:hover {
     margin-left: 100px;
     font-family: 'Montserrat', sans-serif;
 }
-.fadeEl {
+.fadeEl-disabled {
     opacity: 0;
     transition: all 500ms;
     -moz-transition: all 500ms;

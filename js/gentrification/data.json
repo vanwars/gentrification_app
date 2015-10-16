@@ -1,0 +1,40 @@
+[
+    {
+        name: "Malik",
+        image: "images/malik.png",
+        description: "22-year old Malik Byers grew up in West Oakland. He reflects on how his old neighborhood has changed over the years.",
+        media: [
+            { type: "audio", path: "media/malik.mp3" }
+        ]
+    },
+    {
+        name: "Hotel California",
+        image: "images/hotel.png",
+        source: "http://www.ebaldc.org/home/california-hotel-0",
+        description: "Built in the 1920s, the California Hotel was once a place that welcomed African American artists and musicians when they were discriminated against elsewhere. In the early 1970s, the construction of the 580 freeway and the \"suburbanization\" of the neighborhood took a toll on the hotel and it was shut down. Fast forward to 2011: the East Bay Asian Local Development Corporation and other supporters pulled together funds for a major renovation. Now, the California Hotel provides 137 units of low-income housing and even has a rooftop garden."
+    },
+    {
+        name: "West Oakland Bart Station",
+        image: "images/bart.png",
+        source: "http://www.eastbayexpress.com/oakland/oaklands-booming-street-ballet/Content?oid=3847454",
+        description: "Turf dancing is a form of street dance that is said to have originated in Oakland, California. According to locals, credit for the term goes to dancer Jeriel Bey, who created it as an acronym for Taking Up Room on the Floor. Dance elements include popping, locking, and miming. If you ride through the West Oakland BART station, you just might encounter a Turf dancer, making the most of the crowded train as a moving stage.",
+        media: [
+            { type: "video", path: "https://www.youtube.com/embed/dQOKKwVzbtA" }
+        ]
+    },
+    {
+        name: "16th Street Station",
+        image: "images/malik.png",
+        source: "http://www.16thstreetstation.com",
+        description: "Built in 1912 and no longer in active use, the 16th Street station was once among the largest transportation centers in Oakland. It housed the West Coast branch of the very first African American Labor Union in America and was the last stop for many African Americans leaving the South. The station is now managed by an affordable housing non-profit with ambitious plans for restoration. In the meantime, it's occasionally used for events like haunted houses and film shoots. The plaza outside the station is home to three urban agriculture projects including a workforce development program for Oakland teens."
+    },
+    {
+        name: "Miss Cookie",
+        image: "images/cookie.png",
+        source: "http://www.16thstreetstation.com",
+        description: "Joyce Elaine Carter aka \"Miss Cookie\" has lived in her house in West Oakland for 37 years. And she says she's not going anywhere.",
+        media: [
+            { type: "audio", path: "media/missCookie.mp3" }
+        ]
+    }
+]
