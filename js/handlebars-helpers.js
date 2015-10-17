@@ -8,7 +8,7 @@ define(["handlebars"],
             return false;
         });
 
-        Handlebars.registerHelper("hexToRgb", function (hex) {
+        Handlebars.registerHelper("hexToRgb", function (hex, opacity) {
             var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
             result = result ? {
                 r: parseInt(result[1], 16),
@@ -16,7 +16,7 @@ define(["handlebars"],
                 b: parseInt(result[3], 16)
             } : null;
             if (result) {
-                return "rgba(" + result.r + ", " + result.g + ", " + result.b + ", 0.4)";
+                return "rgba(" + result.r + ", " + result.g + ", " + result.b + ", " + opacity + ")";
             }
             return "";
         });

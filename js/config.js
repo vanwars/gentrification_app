@@ -13,23 +13,33 @@ var pages = [
     {
         collection_template_path: "place-list.html",
         item_template_path: "place-item.html",
-        target: '#narrative',
+        region: '#narrative',
         type: "list",
         dataset: "places"
     },
     {
-        target: '#map_container',
+        region: '#map_container',
         type: "mapbox",
-        dataset: "places"
+        dataset: "places",
+        click: ""
     },
     {
         url: "",
         template_path: "splash.html",
-        target: "#pan"
+        region: "#pan",
+        postRender: "animateLogo"
     },
     {
         url: "start",
         transition: "hideSplashScreen"
+    },
+    {
+        url: "detail/:id",
+        type: "detail",
+        dataset: "places",
+        template_path: "place-detail.html",
+        transition: "scroll",
+        region: '#:id'
     },
     {
         url: "*notFound",

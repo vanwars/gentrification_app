@@ -1,26 +1,19 @@
-define(["underscore", "marionette", "model", "views/view-mixin"],
-    function (_, Marionette, Model, ViewMixin) {
+define(["underscore", "marionette", "views/view-mixin"],
+    function (_, Marionette, ViewMixin) {
         "use strict";
         var RecordView = Marionette.ItemView.extend({
             model: null,
             modelEvents: {
                 'change': 'render'
             },
-            onBeforeRender: function () {
-                //console.log("onBeforeRender", this.model);
-                //_.extend(this.extras, this.model.toJSON());
-            },
             initialize: function (opts) {
                 var that = this;
                 _.extend(this, opts);
-                this.model = new Model({
-                    table_id: opts.table_id,
-                    recordID: opts.modelID
-                });
                 this.model.fetch({
                     success: function () {
                         _.extend(that.extras, that.model.toJSON());
                         that.render();
+                        that.queried = true;
                     }
                 });
                 this.render();

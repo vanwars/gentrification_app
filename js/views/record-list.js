@@ -34,9 +34,9 @@ define(["jquery",
 
                     function (Handlebars, CollectionTemplatePath, ItemTemplatePath) {
                         that.childView = Marionette.ItemView.extend({
-                            modelEvents: {
+                            /*modelEvents: {
                                 "change": "render"
-                            },
+                            },*/
                             template: Handlebars.compile(ItemTemplatePath)
                         });
                         that.template = Handlebars.compile(CollectionTemplatePath);

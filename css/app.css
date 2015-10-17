@@ -114,9 +114,6 @@ a:hover {
     right: 0;
     z-index: 9999;
 }
-.fullscreen {
-    border: solid 10px #000;
-}
 .fullscreen,
 .main-title {
     min-height: 100%;
@@ -313,9 +310,7 @@ section a {
     color: rgba(128, 128, 128, 0);
     text-shadow: rgba(64, 64, 64, 1) 0px 0px 10px;
 }
-section img {
-    opacity: .1;
-}
+
 section.active a {
     color: #514f4f;
     text-shadow: rgba(64, 64, 64, 0) 0px 0px 4px;
@@ -323,15 +318,28 @@ section.active a {
 .feature-img {
     width: 350px;
 }
-section img {
-    opacity: .1;
-    -o-transition: opacity 500ms;
-    transition: opacity 500ms;
-    -moz-transition: opacity 500ms;
-    -webkit-transition: opacity 500ms;
-}
+
 section.active img {
-    opacity: 1;
+    animation: fadein 5s;
+    -moz-animation: fadein 5s; /* Firefox */
+    -webkit-animation: fadein 5s; /* Safari and Chrome */
+    -o-animation: fadein 5s; /* Opera */
+}
+@keyframes fadein {
+    from { opacity:0; }
+    to { opacity: 1; }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from { opacity:0; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from { opacity:0; }
+    to { opacity: 1; }
+}
+@-o-keyframes fadein { /* Opera */
+    from { opacity:0; }
+    to { opacity: 1; }
 }
 section.active {
     color: black;
@@ -344,42 +352,6 @@ body.section-0 #map {
 }
 #cover.active {
     background-color: rgba(147, 181, 186, .8);
-}
-#bart.active {
-    background-color: rgba(153, 116, 175, .8);
-}
-#hotel.active {
-    background-color: rgba(54, 132, 166, .8);
-}
-#station.active {
-    background-color: rgba(240, 155, 67, .8);
-}
-#crane.active {
-    background-color: rgba(70, 134, 94, .8);
-}
-#defermery.active {
-    background-color: rgba(220, 103, 164, .8);
-}
-#mural.active {
-    background-color: rgba(184, 103, 26, 0.8);
-}
-#mcclymonds.active {
-    background-color: rgba(250, 212, 73, .8);
-}
-#joshua.active {
-    background-color: rgba(48, 115, 26, .8);
-}
-#kevin.active {
-    background-color: rgba(54, 231, 202, .8);
-}
-#open.active {
-    background-color: rgba(169, 231, 128, .8);
-}
-#cookie.active {
-    background-color: rgba(175, 178, 178, .8);
-}
-#malik.active {
-    background-color: rgba(55, 174, 181, .8);
 }
 #about.active {
     background-color: rgba(247, 94, 103, .8);

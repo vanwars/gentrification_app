@@ -1,0 +1,11 @@
+<h3>{{ name }}</h3>
+{{#if children}}
+    <img src="{{ children.photos.data.[0].path_large }}" />
+{{/if}}
+<p>{{ description }}</p>
+
+{{#each children.audio.data}}
+    <hr>
+    <p>{{this.description}}</p>
+    <audio id="audio-player" src="{{this.file_path}}" controls="controls"></audio>
+{{/each}}

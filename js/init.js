@@ -7,9 +7,10 @@ define(["underscore",
         "views/record-detail",
         "views/mapbox",
         "collection",
+        "model",
         "functions"
     ],
-    function (_, $, Backbone, Marionette, BaseView, RecordListView, RecordDetailView, MapboxView, Collection) {
+    function (_, $, Backbone, Marionette, BaseView, RecordListView, RecordDetailView, MapboxView, Collection, Model) {
         "use strict";
         var App = new Marionette.Application();
         _.extend(App, {
@@ -17,8 +18,7 @@ define(["underscore",
             pages: {},
             routes: {},
             appRouter: null,
-            defaultTarget: '.section-content',
-            spokesTarget: '.explore_mainnav',
+            defaultRegion: '.section-content',
 
             buildViews: function (pages) {
                 var that = this;
@@ -28,7 +28,7 @@ define(["underscore",
                         v;
                     if (!page.url && page.url != "") {
                         v = new View(page);
-                        $(page.target || that.defaultTargets).html(v.el);
+                        $(page.region || that.defaultRegion).html(v.el);
                         v.delegateEvents();
                     }
                 });
@@ -40,6 +40,7 @@ define(["underscore",
                     this.attachDataset(page);
                     return RecordListView.extend(page);
                 case "detail":
+                    this.attachModelFromDataset(page);
                     return RecordDetailView.extend(page);
                 case "mapbox":
                     this.attachDataset(page);
@@ -50,7 +51,10 @@ define(["underscore",
             },
 
             attachDataset: function (page) {
-                if (!page.dataset) { return; }
+                if (!page.dataset) {
+                    alert(page.type + " view must have dataset defined in the config file");
+                    return;
+                }
                 var dataset = this.datasets[page.dataset];
                 if (!dataset.collection) {
                     dataset.collection = new Collection({
@@ -63,6 +67,18 @@ define(["underscore",
                 _.extend(page, dataset);
             },
 
+            attachModelFromDataset: function (page) {
+                if (!page.dataset) {
+                    alert(page.type + " view must have dataset defined in the config file");
+                    return;
+                }
+                var dataset = this.datasets[page.dataset];
+                page.model = dataset.collection.get(page.modelID);
+                if (!page.model) { page.model = new Model(); }
+                page.model.urlRoot = 'http://dev.localground.org' +
+                                    dataset.api_endpoint + "/";
+            },
+
             buildRoutes: function (pages) {
                 var that = this;
                 /* Dynamically builds Backbone Routes from the config file */
@@ -73,6 +89,7 @@ define(["underscore",
                         page.modelID = page.id;
                     }
                     that.routes[page.url] = function (id) {
+                        if (id) { page.id = id; }
                         if (page.template_path) {
                             that.loadView(page, id);
                         }
@@ -82,17 +99,17 @@ define(["underscore",
             },
 
             loadView: function (page, id) {
-                //console.log(page);
                 if (id) { page.modelID = id; }
                 var View = this.getView(page),
-                    view = new View(page);
-                $(page.target || this.defaultTarget).html(view.el);
+                    view = new View(page),
+                    region = page.region.replace(":id", id);
+                $(region || this.defaultRegion).html(view.el);
                 view.delegateEvents();
             },
 
             executeTransition: function (page) {
                 if (page.transition) {
-                    eval(page.transition + "()");
+                    eval(page.transition + "(page)");
                 }
             }
         });

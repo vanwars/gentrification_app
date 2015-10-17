@@ -45,15 +45,11 @@ define(["marionette", "collection", "mapbox"],
             markerClick: function (e) {
                 var id = e.layer.feature.properties.id,
                     model = this.collection.get(id),
-                    target = "#" + id,
+                    route = "#/detail/" + id,
                     latLng = e.layer.getLatLng();
-                window.location.hash = target;
-
-                // Get Marker Detail if applicable:
-                if (model.get("overlay_type") == "marker" && !model.get("children")) {
-                    model.urlRoot = 'http://dev.localground.org' + this.api_endpoint;
-                    model.fetch();
-                }
+                // load panel:
+                window.location.hash = route;
+                // pan map:
                 this.map.setView([latLng.lat, latLng.lng], 16);
             }
         });

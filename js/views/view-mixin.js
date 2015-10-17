@@ -11,11 +11,17 @@ define([], function () {
                         //console.log("Template is loading asynchronously");
                         that.template = Handlebars.compile(Path);
                         that.$el.html(that.template(that.extras));
+                        if (that.postRender) {
+                            eval(that.postRender + "(that)");
+                        }
                     }
                 );
             } else {
                 //console.log("Template loading from memory");
                 this.$el.html(this.template(this.extras));
+            }
+            if (this.postRender) {
+                eval(this.postRender + "(this)");
             }
             return this.$el;
         },
