@@ -8,7 +8,8 @@ require.config({
         'text': 'external/text',
         'marionette': 'external/backbone.marionette',
         'underscore': 'external/underscore-min',
-        'mapbox': '//youthradio.org/innovationlab/westsidestories/bower_components/mapbox.js/mapbox'
+        'mapbox': '//youthradio.org/innovationlab/westsidestories/bower_components/mapbox.js/mapbox',
+        'foundation': '/js/gentrification/foundation.min'
     },
     shim: {
         'underscore': {
@@ -29,6 +30,9 @@ require.config({
             exports: "Handlebars"
         },
         'jquery.bootstrap': {
+            deps: ['jquery']
+        },
+        'foundation': {
             deps: ['jquery']
         }
     },

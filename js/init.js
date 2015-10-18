@@ -8,6 +8,7 @@ define(["underscore",
         "views/mapbox",
         "collection",
         "model",
+        "foundation",
         "functions"
     ],
     function (_, $, Backbone, Marionette, BaseView, RecordListView, RecordDetailView, MapboxView, Collection, Model) {

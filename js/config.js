@@ -31,7 +31,13 @@ var pages = [
     },
     {
         url: "start",
-        transition: "hideSplashScreen"
+        transition: "hidePanels"
+    },
+    {
+        url: "share",
+        template_path: "mailer.html",
+        region: "#myModal",
+        postRender: "showModal"
     },
     {
         url: "detail/:id",
@@ -43,6 +49,6 @@ var pages = [
     },
     {
         url: "*notFound",
-        transition: "hideSplashScreen"
+        transition: "hidePanels"
     }
 ];
