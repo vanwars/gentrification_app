@@ -76,8 +76,7 @@ define(["underscore",
                 var dataset = this.datasets[page.dataset];
                 page.model = dataset.collection.get(page.modelID);
                 if (!page.model) { page.model = new Model(); }
-                page.model.urlRoot = 'http://dev.localground.org' +
-                                    dataset.api_endpoint + "/";
+                page.model.urlRoot = dataset.api_endpoint;
             },
 
             buildRoutes: function (pages) {
@@ -108,6 +107,14 @@ define(["underscore",
                 view.delegateEvents();
             },
 
+            applyRoutingHacks: function () {
+                $('a').click(function () {
+                    if ('#/' + Backbone.history.fragment == $(this).attr('href')) {
+                        Backbone.history.loadUrl(Backbone.history.fragment);
+                    }
+                });
+            },
+
             executeTransition: function (page) {
                 if (page.transition) {
                     eval(page.transition + "(page)");
@@ -124,6 +131,10 @@ define(["underscore",
             });
             this.appRouter = new AppRouter();
             Backbone.history.start();
+            $(document).ready(function () {
+                initialize();
+            });
+            this.applyRoutingHacks();
         });
         return App;
     });

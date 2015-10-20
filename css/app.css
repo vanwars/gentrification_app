@@ -83,7 +83,7 @@ a:hover {
     border-radius: 150px;
     background-color: rgba(88, 88, 88, .8);
 }
-#myModal {
+#shareModal {
     top: 50px;
     height: 80%;
     background-color: rgb(166, 198, 203);
@@ -272,6 +272,7 @@ section {
     color: rgba(128, 128, 128, 0);
     text-decoration: none;
     text-shadow: rgba(64, 64, 64, 1) 0px 0px 10px;
+    min-height: 450px;
 }
 section audio {
     width: 100%;
@@ -319,7 +320,7 @@ section.active a {
     width: 350px;
 }
 
-section.active img {
+section.active img, section.active h3, section.active p, section.active audio {
     animation: fadein 5s;
     -moz-animation: fadein 5s; /* Firefox */
     -webkit-animation: fadein 5s; /* Safari and Chrome */
@@ -560,7 +561,7 @@ body.section-0 #map {
     #about p {
         font-size: 12px;
     }
-    #myModal {
+    #shareModal {
         top: 0;
     }
     body.reveal-modal {

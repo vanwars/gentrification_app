@@ -4,7 +4,7 @@
 */
 var datasets = {
     places: {
-        api_endpoint: '/api/0/markers/',
+        api_endpoint: 'http://dev.localground.org/api/0/markers/',
         page_size: 50,
         filter: "WHERE project = 23"
     }
@@ -27,7 +27,10 @@ var pages = [
         url: "",
         template_path: "splash.html",
         region: "#pan",
-        postRender: "animateLogo"
+        postRender: "animateLogo",
+        events: {
+            "click .icon": "open"
+        }
     },
     {
         url: "start",
@@ -36,8 +39,9 @@ var pages = [
     {
         url: "share",
         template_path: "mailer.html",
-        region: "#myModal",
-        postRender: "showModal"
+        region: "#shareModal",
+        postRender: "showModal",
+        transition: "hidePanels"
     },
     {
         url: "detail/:id",

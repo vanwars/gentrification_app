@@ -20,7 +20,7 @@ define(["underscore", "backbone"],
             initialize: function (opts) {
                 //console.log(opts);
                 _.extend(this, opts);
-                this.url = 'http://dev.localground.org' + this.api_endpoint + '?page_size=' + this.page_size;
+                this.url = this.api_endpoint + '?page_size=' + this.page_size;
                 if (this.filter) {
                     this.url += "&query=" + this.filter;
                 }

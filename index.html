@@ -73,7 +73,7 @@
 
 
     <!-- Modal -->
-    <div class="reveal-modal text-center" id="myModal"></div>
+    <div class="reveal-modal text-center" id="shareModal" data-reveal=""></div>
 
     <!-- Script -->
     <!-- script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -86,9 +86,11 @@
     <script src="/js/require-config.js" type="text/javascript"></script>
     <script>
         require(["init", "config"], function(App) {
-                App.start({ pages: pages, datasets: datasets });
-            }
-        );
+            App.start({
+                pages: pages,
+                datasets: datasets
+            });
+        });
     </script>
 
 </body>

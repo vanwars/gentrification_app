@@ -1,11 +1,15 @@
+var initialize = function () {
+    $(document).foundation();
+};
+
 var hidePanels = function () {
     $("#splash").fadeOut("slow");
     $("#main-content-wrapper").addClass("visible");
-    $('#myModal').foundation('reveal', 'close');
 };
 
 var scroll = function (page) {
     hidePanels();
+    var $el = $('#' + page.id);
     var container = $('#narrative'),
         scrollTo = $('#' + page.id);
 
@@ -14,11 +18,11 @@ var scroll = function (page) {
         container.scrollTop(
             scrollTo.offset().top - container.offset().top + container.scrollTop()
         );
-        /*container.animate({
-            scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-        });*/
     }
-    $('#' + page.id).addClass('active');
+    $el.addClass('active');
+    $el.css({
+        'min-height': $(document).height()
+    });
 };
 
 var animateLogo = function () {
@@ -36,11 +40,6 @@ var animateLogo = function () {
 };
 
 var showModal = function () {
-    $('#myModal').foundation('reveal', 'open');
-    /*console.log('foundation');
-    setTimeout(function () {
-        alert("close");
-        $('#myModal').foundation('reveal', 'close');
-    }, 2500);*/
-    //$('myModal').show();
+    $(document).foundation();
+    $('#shareModal').foundation('reveal', 'open');
 };
