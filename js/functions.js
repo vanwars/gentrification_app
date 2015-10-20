@@ -1,5 +1,13 @@
 var initialize = function () {
     $(document).foundation();
+    $("#narrative").scroll(function () {
+        $('section').each(function () {
+            var offset = $(this).offset().top - $(window).scrollTop();
+            if (offset < 100 && offset > -100) {
+                window.location.hash = "#/detail/" + $(this).attr("id");
+            }
+        });
+    });
 };
 
 var hidePanels = function () {
@@ -9,9 +17,9 @@ var hidePanels = function () {
 
 var scroll = function (page) {
     hidePanels();
-    var $el = $('#' + page.id);
+    var $el = $('#' + page.modelID);
     var container = $('#narrative'),
-        scrollTo = $('#' + page.id);
+        scrollTo = $('#' + page.modelID);
 
     if (scrollTo.get(0)) {
         $('section').removeClass('active');
@@ -41,5 +49,10 @@ var animateLogo = function () {
 
 var showModal = function () {
     $(document).foundation();
-    $('#shareModal').foundation('reveal', 'open');
+    $('#share-modal').foundation('reveal', 'open');
+};
+
+var makeActive = function (view) {
+    var $el = $('#' + view.modelID);
+    view.$el.parent().addClass("active");
 };

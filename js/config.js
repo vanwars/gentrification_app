@@ -13,7 +13,7 @@ var pages = [
     {
         collection_template_path: "place-list.html",
         item_template_path: "place-item.html",
-        region: '#narrative',
+        region: '#data',
         type: "list",
         dataset: "places"
     },
@@ -33,15 +33,18 @@ var pages = [
         }
     },
     {
-        url: "start",
-        transition: "hidePanels"
+        url: "detail/cover",
+        template_path: "cover.html",
+        transition: "scroll",
+        region: '#cover',
+        postRender: "makeActive"
     },
     {
-        url: "share",
-        template_path: "mailer.html",
-        region: "#shareModal",
-        postRender: "showModal",
-        transition: "hidePanels"
+        url: "detail/yr",
+        template_path: "about-yr.html",
+        region: '#yr',
+        transition: "scroll",
+        postRender: "makeActive"
     },
     {
         url: "detail/:id",
@@ -50,6 +53,13 @@ var pages = [
         template_path: "place-detail.html",
         transition: "scroll",
         region: '#:id'
+    },
+    {
+        url: "share",
+        template_path: "mailer.html",
+        region: "#share-modal",
+        postRender: "showModal",
+        transition: "hidePanels"
     },
     {
         url: "*notFound",

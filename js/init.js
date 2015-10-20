@@ -88,10 +88,10 @@ define(["underscore",
                     if (page.type == "detail") {
                         page.modelID = page.id;
                     }
-                    that.routes[page.url] = function (id) {
-                        if (id) { page.id = id; }
+                    that.routes[page.url] = function (modelID) {
+                        if (modelID) { page.modelID = modelID; }
                         if (page.template_path) {
-                            that.loadView(page, id);
+                            that.loadView(page, modelID);
                         }
                         that.executeTransition(page);
                     };
