@@ -286,7 +286,7 @@ section audio {
     -moz-transition: opacity 500ms;
     -webkit-transition: opacity 500ms;
 }
-section.active audio {
+section.active audio, section.active img {
     opacity: 1;
 }
 section .videoWrapper {
@@ -371,7 +371,7 @@ body.section-0 #map {
     background-position: 50% 50%9 !important;
 }
 .sprite {
-    background-image: url(../images/spritesheet.png);
+    background-image: url(/images/spritesheet.png);
     background-repeat: no-repeat;
     display: block;
 }

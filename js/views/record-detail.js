@@ -13,7 +13,6 @@ define(["underscore", "marionette", "views/view-mixin"],
                     success: function () {
                         _.extend(that.extras, that.model.toJSON());
                         that.render();
-                        that.queried = true;
                     }
                 });
                 this.render();
