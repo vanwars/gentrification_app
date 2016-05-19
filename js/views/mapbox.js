@@ -69,15 +69,15 @@ define(["jquery", "marionette", "mapbox"],
                     route = "#/detail/" + id,
                     latLng = e.layer.getLatLng();
 
-                //show active map icon:
+                // 1. show active map icon:
                 $(".sprite").removeClass("active");
                 $div.addClass("active");
                 $("body.section-0 #map").css({ opacity: 1 });
 
-                // load panel:
+                // 2. load panel:
                 window.location.hash = route;
 
-                // pan map:
+                // 3. pan map:
                 this.map.setView([latLng.lat, latLng.lng], 16);
             }
         });

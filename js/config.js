@@ -4,7 +4,7 @@
 */
 var datasets = {
     places: {
-        api_endpoint: 'http://dev.localground.org/api/0/markers/',
+        api_endpoint: 'https://dev.localground.org/api/0/markers/',
         page_size: 50,
         filter: "WHERE project = 23"
     }
